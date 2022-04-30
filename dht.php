@@ -1,9 +1,9 @@
 <?php
 class dht11{
  public $link='';
- function __construct($temperature, $humidity){
+ function __construct($Temperature, $Humidity){
   $this->connect();
-  $this->storeInDB($temperature, $humidity);
+  $this->storeInDB($Temperature, $Humidity);
  }
  
  function connect(){
@@ -11,14 +11,14 @@ class dht11{
   mysqli_select_db($this->link,'<Your Database Name>') or die('Cannot select the DB');
  }
  
- function storeInDB($temperature, $humidity){
-  $query = "insert into <Your table name> set humidity='".$humidity."', temperature='".$temperature."'";
+ function storeInDB($Temperature, $Humidity){
+  $query = "insert into <Your table name> set Humidity='".$Humidity."', Temperature='".$Temperature."'";
   $result = mysqli_query($this->link,$query) or die('Errant query:  '.$query);
  }
  
 }
-if($_GET['temperature'] != '' and  $_GET['humidity'] != ''){
- $dht11=new dht11($_GET['temperature'],$_GET['humidity']);
+if($_GET['Temperature'] != '' and  $_GET['Humidity'] != ''){
+ $dht11=new dht11($_GET['Temperature'],$_GET['Humidity']);
 }
 
 
